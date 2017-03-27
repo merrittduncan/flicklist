@@ -61,8 +61,13 @@ function render() {
   model.browseItems.forEach(function(movie) {
         var myButton = $("<button></button>").text("Add to Watchlist");
         myButton.click(function(){
-            model.watchlistItems.push(movie);
-            render();
+            if (model.watchlistItems.indexOf(movie) == -1)             {model.watchlistItems.push(movie);
+                        render()}
+            else
+            {
+                render();
+            }
+
         });
 		// TODO 3
 		// insert a list item into the <ul> in the browse section;
