@@ -14,7 +14,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "8e888fa39ec243e662e1fb738c42ae99" // TODO 0 add your api key
+  token: "e4c4dc1d7b1d1f4a08a397c5faf53694" // TODO 0 add your api key
 }
 
 
@@ -39,7 +39,7 @@ function discoverMovies(callback) {
 
 
 /**
- * Makes an AJAX request to the /search/movie endpoint of the API, using the 
+ * Makes an AJAX request to the /search/movie endpoint of the API, using the
  * query string that was passed in
  *
  * if successful, updates model.browseItems appropriately and then invokes
@@ -79,6 +79,8 @@ function render() {
   // insert browse items
   model.browseItems.forEach(function(movie) {
     var title = $("<h4></h4>").text(movie.original_title);
+    var overview =
+    $("<P></P>").text(movie.overview);
     var button = $("<button></button>")
       .text("Add to Watchlist")
       .click(function() {
@@ -95,20 +97,19 @@ function render() {
     // create a paragraph containing the movie object's .overview value
     // then, in the code block below,
     // append the paragraph in between the title and the button
+    var overview =
+    $("<P></P>").text(movie.overview);
 
 
     // append everything to itemView, along with an <hr/>
     var itemView = $("<li></li>")
       .append($("<hr/>"))
       .append(title)
+      .append(overview)
       .append(button);
 
     // append the itemView to the list
     $("#section-browse ul").append(itemView);
   });
-  
+
 }
-
-
-
-
